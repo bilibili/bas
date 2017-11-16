@@ -29,7 +29,7 @@ def text t {
 
 def text y {
     content = "子对象"
-    parent = 't'
+    parent = "t"
     fontSize = 5%
 }
 ```

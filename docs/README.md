@@ -54,7 +54,7 @@ def text y {
 | rotateY     | number | 否    | 0        | 是    | 是    | Y轴旋转 |
 | rotateZ     | number | 否    | 0        | 是    | 是    | Z轴旋转 |
 | parent      | text   | 否    | -        | 否    | 否    | 所属层 |
-| fontSize    | number | 否    | 25       | 否    | 否    | 文本字体大小，可以为百分比（在HTML5平台，最终字体大小为当前屏幕宽度*字体百分比px） |
+| fontSize    | number | 否    | 25       | 是    | 否    | 文本字体大小，可以为百分比（在HTML5平台，最终字体大小为当前屏幕宽度*字体百分比px） |
 | fontFamily  | string | 否    | ""       | 否    | 否    | 文本字体，默认值为平台默认字体。如果字体不存在时，使用平台默认字体 |
 
 ## 交互按钮
@@ -135,6 +135,39 @@ def button d { // seek按钮
 | 属性名  | 值类型  | 是否必须 | 默认值  | 是否可变 | 是否渐变 | 说明 |
 | ---- | ---- | ---- | ---- | ---- | ---- | -------- |
 | time | time | 是    | -    | -    | -    | seek目标时间 |
+
+## path 对象
+
+### 示例
+
+```js
+def path p {
+    d = "M30.828,30.422 18.997,16.260 Z"
+    x = 10%
+    y = 10%
+    scale = 3
+    borderWidth = 1
+    borderColor = 0xffffff
+    borderAlpha = 0.8
+    fillColor = 0x00a1d6
+    fillAlpha = 0.8
+}
+```
+
+### 属性
+
+| 属性名 | 值类型 | 是否必须 | 默认值 | 是否可变 | 是否渐变 | 说明 |
+|---|---|---|---|---|---|---|
+| d | string | 是 | "" | 否 | 否 | svg 路径 |
+| x | number | 否 | 0 | 是 | 是 | x坐标 |
+| y | number | 否 | 0 | 是 | 是 | y坐标 |
+| scale | number | 否 | 1 | 否 | 否 | 缩放 |
+| borderWidth | number | 否 | 0 | 否 | 否 | 描边宽度 |
+| borderColor | number | 否 | 0 | 否 | 否 | 描边颜色 |
+| borderAlpha | number | 否 | 1 | 否 | 否 | 描边透明度 |
+| fillColor | number | 否 | 0xffffff | 否 | 否 | 填充颜色 |
+| fillAlpha | number | 否 | 1 | 否 | 否 | 填充透明度 |
+| viewBox | string | 否 | - | 否 | 否 | svg 画布大小，默认完整显示 |
 
 ## 动画
 

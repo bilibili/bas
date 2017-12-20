@@ -20,7 +20,8 @@
           'rotateZ     | number | 否    | 0        | 是    | 是    | Z轴旋转',
           'parent      | text   | 否    | -        | 否    | 否    | 所属层',
           'fontSize    | number | 否    | 25       | 是    | 否    | 文本字体大小，可以为百分比（在HTML5平台，最终字体大小为当前屏幕宽度*字体百分比px）',
-          'fontFamily  | string | 否    | ""       | 否    | 否    | 文本字体，默认值为平台默认字体。如果字体不存在时，使用平台默认字体'
+          'fontFamily  | string | 否    | ""       | 否    | 否    | 文本字体，默认值为平台默认字体。如果字体不存在时，使用平台默认字体',
+          'scale       | number | 否    | 1        | 是    | 是    | 缩放'
         ],
         tableData2: [
           'text      | string                   | 否    | ""       | 是    | 否    | 按钮标签',

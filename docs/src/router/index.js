@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Pages from '@/components/Pages'
+import Playground from '@/components/Playground'
 
 Vue.use(Router)
 
@@ -28,6 +29,13 @@ const router = new Router({
       },
       meta: {
         name: '文档'
+      }
+    },
+    {
+      path: '/playground',
+      component: Playground,
+      meta: {
+        name: '试验室'
       }
     }
   ]

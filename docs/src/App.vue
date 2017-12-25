@@ -70,6 +70,8 @@ export default {
   .el-header {
     box-shadow: 0 0 2px rgba(0,0,0,0.25);
     padding: 0;
+    z-index: 3;
+    position: relative;
   }
 
   .header {

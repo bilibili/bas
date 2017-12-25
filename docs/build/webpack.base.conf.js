@@ -38,7 +38,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+      '@': resolve('src')
     }
   },
   module: {
@@ -108,16 +108,13 @@ module.exports = {
               },
 
               render: function (tokens, idx) {
-                var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
                 if (tokens[idx].nesting === 1) {
-                  var description = (m && m.length > 1) ? m[1] : ''
-                  var content = tokens[idx + 1].content.replace(/(<[^>]*)=""(?=.*>)/g, '$1')
-                  var basCode = md.utils.escapeHtml(JSON.stringify({ code: content }))
+                  var content = tokens[idx + 1].content
+                  var code = md.utils.escapeHtml(JSON.stringify({ code: content }))
 
-                  return `<demo-block :basCode="${basCode}">
-                    <div class="highlight" slot="highlight">`
+                  return `<code-block :code="${code}">`
                 }
-                return '</div></demo-block>\n'
+                return '</code-block>\n'
               }
             }],
             [require('markdown-it-container'), 'tip'],
@@ -151,7 +148,7 @@ var wrap = function (render) {
 
 function convert (str) {
   str = str.replace(/(&#x)(\w{4});/gi, function ($0) {
-    return String.fromCharCode(parseInt(encodeURIComponent($0).replace(/(%26%23x)(\w{4})(%3B)/g, '$2'), 16));
-  });
-  return str;
+    return String.fromCharCode(parseInt(encodeURIComponent($0).replace(/(%26%23x)(\w{4})(%3B)/g, '$2'), 16))
+  })
+  return str
 }

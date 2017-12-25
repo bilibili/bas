@@ -9,10 +9,12 @@
         :key="index"
         :index="index + ''">
         <router-link
+          :target="nav.newWindow ? '_blank' : '_self'"
           v-if="nav.path"
           :to="nav.path">{{ nav.name }}
         </router-link>
         <a
+          target="_blank"
           v-if="nav.href"
           :href="nav.href">{{ nav.name }}
         </a>
@@ -33,6 +35,10 @@ export default {
         {
           name: '文档',
           path: '/docs'
+        },
+        {
+          name: '试验室',
+          path: '/playground'
         },
         {
           name: 'GitHub',

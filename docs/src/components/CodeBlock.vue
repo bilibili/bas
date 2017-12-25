@@ -92,7 +92,7 @@
     methods: {
       run () {
         this.$message('在新窗口运行')
-        window.open(`/#/playground?code=${encodeURIComponent(this.code.code)}`)
+        window.open(`${window.location.pathname}#/playground?code=${encodeURIComponent(this.code.code)}`)
       },
 
       copySuccess () {

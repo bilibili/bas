@@ -24,16 +24,16 @@
 </template>
 
 <style>
-.ace_cursor-layer {
+.code-block .ace_cursor-layer {
   display: none;
 }
-.ace_print-margin-layer {
+.code-block .ace_print-margin-layer {
   display: none;
 }
-.ace_marker-layer .ace_active-line {
+.code-block .ace_marker-layer .ace_active-line {
   display: none;
 }
-.ace_scroller {
+.code-block .ace_scroller {
   cursor: auto;
 }
 </style>

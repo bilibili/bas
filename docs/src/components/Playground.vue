@@ -55,7 +55,7 @@
     mounted () {
       const startTime = +new Date()
       /* eslint-disable new-cap */
-      this.bas = new window.BasDanmaku.default({
+      this.bas = new window.BasDanmaku({
         container: this.$refs.basContainer,
         timeSyncFunc: function () {
           return +new Date() - startTime

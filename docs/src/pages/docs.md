@@ -3,56 +3,61 @@
     data() {
       return {
         tableData1: [
-          'content     | string | 是    | -        | 是    | 否    | 文本内容',
           'x           | number | 否    | 0        | 是    | 是    | x 坐标，可以为百分比值',
           'y           | number | 否    | 0        | 是    | 是    | y 坐标，可以为百分比值',
+          'zIndex      | number | 否    | 0        | 否    | 否    | 层次权重，值高的对象在上层',
+          'scale       | number | 否    | 1        | 是    | 是    | 缩放',
+          'duration    | time   | 否    | -        | 否    | 否    | 元素生命周期，有动画时默认为动画总时间，无动画时默认4s',
+          'content     | string | 是    | \'请输入内容\' | 是    | 否    | 文本内容',
           'alpha       | number | 否    | 1        | 是    | 是    | 透明度，取值范围 [0, 1]，0 完全透明, 1 完全不透明',
           'color       | number | 否    | 0xffffff | 是    | 是    | 文本颜色',
+          'anchorX     | number | 否    | 0        | 否    | 否    | 锚点，位置为长度的百分比',
+          'anchorY     | number | 否    | 0        | 否    | 否    | 锚点，位置为宽度的百分比',
+          'fontSize    | number | 否    | 25       | 是    | 否    | 文本字体大小，可以为百分比（百分比字体大小为当前屏幕宽度*字体百分比px）',
+          'fontFamily  | string | 否    | -       | 否    | 否    | 文本字体，默认值为平台默认字体。如果字体不存在时，使用平台默认字体',
           'bold        | number | 否    | 1        | 否    | 否    | 是否加粗',
           'textShadow  | number | 否    | 1        | 否    | 否    | 是否字体阴影',
           'strokeWidth | number | 否    | 0        | 否    | 否    | 描边宽度',
-          'strokeColor | number | 否    | 0x000000 | 否    | 否    | 描边颜色',
-          'anchorX     | number | 否    | 0        | 否    | 否    | 锚点，位置为长度的百分比',
-          'anchorY     | number | 否    | 0        | 否    | 否    | 锚点，位置为宽度的百分比',
-          'zIndex      | number | 否    | 0        | 否    | 否    | 层次权重，值越高的对象在上层',
+          'strokeColor | number | 否    | 0xffffff | 否    | 否    | 描边颜色',
           'rotateX     | number | 否    | 0        | 是    | 是    | X轴旋转',
           'rotateY     | number | 否    | 0        | 是    | 是    | Y轴旋转',
           'rotateZ     | number | 否    | 0        | 是    | 是    | Z轴旋转',
-          'parent      | text   | 否    | -        | 否    | 否    | 所属层',
-          'fontSize    | number | 否    | 25       | 是    | 否    | 文本字体大小，可以为百分比（在HTML5平台，最终字体大小为当前屏幕宽度*字体百分比px）',
-          'fontFamily  | string | 否    | ""       | 否    | 否    | 文本字体，默认值为平台默认字体。如果字体不存在时，使用平台默认字体',
-          'scale       | number | 否    | 1        | 是    | 是    | 缩放'
+          'parent      | text   | 否    | -        | 否    | 否    | 所属层'
         ],
         tableData2: [
-          'text      | string                   | 否    | ""       | 是    | 否    | 按钮标签',
-          'fontSize  | number                   | 否    | 25       | 是    | 否    | 按钮字体大小',
+          'x           | number | 否    | 0        | 是    | 是    | x 坐标，可以为百分比值',
+          'y           | number | 否    | 0        | 是    | 是    | y 坐标，可以为百分比值',
+          'zIndex      | number | 否    | 0        | 否    | 否    | 层次权重，值高的对象在上层',
+          'scale       | number | 否    | 1        | 否    | 否    | 缩放',
+          'duration    | time   | 否    | -        | 否    | 否    | 元素生命周期，有动画时默认为动画总时间，无动画时默认4s',
+          'text      | string                   | 是    | \'请输入内容\' | 是    | 否    | 按钮标签',
+          'fontSize  | number                   | 否    | 25       | 是    | 否    | 按钮字体大小，可以为百分比（百分比字体大小为当前屏幕宽度*字体百分比px）',
           'textColor | number                   | 否    | 0x000000 | 否    | 否    | 按钮文字颜色',
           'textAlpha | number                   | 否    | 1        | 否    | 否    | 按钮字体透明度',
           'fillColor | number                   | 否    | 0xffffff | 否    | 否    | 按钮填充颜色',
           'fillAlpha | number                   | 否    | 1        | 否    | 否    | 按钮填充透明度',
-          'duration  | time                     | 否    | 0        | 否    | 否    | 按钮显示时间',
-          'target    | av object or seek object | 是    | -        | 否    | 否    | 按钮功能',
-          'x         | number                   | 否    | 0        | 是    | 是    | 按钮x坐标',
-          'y         | number                   | 否    | 0        | 是    | 是    | 按钮y坐标',
+          'target    | av object or seek object | 是    | -        | 否    | 否    | 按钮功能'
         ],
         tableData3: [
-          'av   | number | yes  | -    | -    | -    | 视频av号',
-          'page | number | no   | 1    | -    | -    | 视频分P号',
-          'time | time   | no   | 0s   | -    | -    | 视频开始播放点'
+          'av   | number | 是  | -    | 否    | 否    | 视频av号',
+          'page | number | 否   | 1    | 否    | 否   | 视频分P号',
+          'time | time   | 否   | 0s   | 否   | 否    | 视频开始播放点'
         ],
         tableData4: [
-          'seasonId  | number | yes  | -    | -    | -    | 番剧id',
-          'episodeId | number | yes  | -    | -    | -    | 番剧分集id',
-          'time      | time   | no   | 0s   | -    | -    | 视频开始播放点'
+          'seasonId  | number | 是  | 否    | 否    | 否    | 番剧id',
+          'episodeId | number | 是  | 否    | 否    | 否    | 番剧分集id',
+          'time      | time   | 否   | 0s   | 否    | 否    | 视频开始播放点'
         ],
         tableData5: [
-          'time | time | 是    | -    | -    | -    | seek目标时间'
+          'time | time | 是    | -    | 否    | 否    | seek目标时间'
         ],
         tableData6: [
+          'x           | number | 否    | 0        | 是    | 是    | x 坐标，可以为百分比值',
+          'y           | number | 否    | 0        | 是    | 是    | y 坐标，可以为百分比值',
+          'zIndex      | number | 否    | 0        | 否    | 否    | 层次权重，值高的对象在上层',
+          'scale       | number | 否    | 1        | 否    | 否    | 缩放',
+          'duration    | time   | 否    | -        | 否    | 否    | 元素生命周期，有动画时默认为动画总时间，无动画时默认4s',
           'd | string | 是 | "" | 否 | 否 | svg 路径',
-          'x | number | 否 | 0 | 是 | 是 | x坐标，可以为百分比值',
-          'y | number | 否 | 0 | 是 | 是 | y坐标，可以为百分比值',
-          'scale | number | 否 | 1 | 否 | 否 | 缩放',
           'borderWidth | number | 否 | 0 | 否 | 否 | 描边宽度',
           'borderColor | number | 否 | 0 | 否 | 否 | 描边颜色',
           'borderAlpha | number | 否 | 1 | 否 | 否 | 描边透明度',
@@ -91,6 +96,7 @@ def text t {
     anchorX = 0.5
     anchorY = 0.5
     zIndex = 3
+    duration = 5s
 }
 
 def text y {
@@ -115,13 +121,15 @@ def text y {
 ``` js
 def button b {
   text = "av1714157"
-  x = 10%
-  y = 20%
+  x = 30%
+  y = 37%
   ontSize = 5%
   textColor = 0xffffff
   fillColor = 0xFF9100
-  fillAlpha = 0.6
+  fillAlpha = 0.8
   duration = 2s
+  zIndex = 1
+  scale = 0.8
   target = av {
     av = 1714157
     page = 1
@@ -177,6 +185,9 @@ def path p {
   fillColor = 0x00a1d6
   fillAlpha = 0.8
   width = 20%
+  duration = 2s
+  zIndex = 1
+  scale = 0.8
 }
 ```
 :::
@@ -196,7 +207,7 @@ SetExpr
     : SetExpr then SetExpr
     | { SetExpr+ }
     | set id {
-        (id = (value_expr | [value_expr, string]))*
+        (id = value_expr)*
     } time_expr (, string)?
 ```
 
@@ -209,7 +220,7 @@ def text t {
 }
 set t {
     x = 50%
-    y = [50%, "easeOut"]
+    y = 50%
 } 1s, "linear"
 ```
 :::
@@ -219,7 +230,6 @@ set t {
 ```javascript
 set 目标对象 {
     可渐变属性 = 目标值
-    可渐变属性 = [目标值, "插值类型"]
 } 动画持续, "区块默认的插值类型"
 ```
 set 语句块定义了一个对象的一组属性在相同时间内的动画。

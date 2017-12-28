@@ -41,6 +41,7 @@
   background: #000;
   float: right;
   position: relative;
+  overflow: hidden;
 }
 </style>
 

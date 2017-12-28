@@ -41,87 +41,48 @@ export default {
   data () {
     return {
       activeId: '0-0',
-      openeds: ['0'],
-      guideMenu: [{
-        name: '指南1',
-        children: [{
-          name: 'item1'
-        }, {
-          name: 'item2'
-        }]
-      }, {
-        name: '指南2',
-        children: [{
-          name: 'item3'
-        }, {
-          name: 'item4'
-        }]
-      }],
-      docsMenu: [{
-        name: '文本对象',
-        children: [{
-          name: '示例',
-          hash: 'shi-li'
-        }, {
-          name: '属性',
-          hash: 'shu-xing'
-        }]
-      }, {
-        name: '交互按钮',
-        children: [{
-          name: '示例',
-          hash: 'shi-li-2'
-        }, {
-          name: '属性',
-          hash: 'shu-xing-2'
-        }, {
-          name: 'av object',
-          hash: 'av-object'
-        }, {
-          name: 'bangumi object',
-          hash: 'bangumi-object'
-        }, {
-          name: 'seek object',
-          hash: 'seek-object'
-        }]
-      }, {
-        name: 'path 对象',
-        children: [{
-          name: '示例',
-          hash: 'shi-li-3'
-        }, {
-          name: '属性',
-          hash: 'shu-xing-3'
-        }]
-      }, {
-        name: '动画',
-        children: [{
-          name: '简单动画',
-          hash: 'jian-dan-dong-hua'
-        }, {
-          name: '串联动画',
-          hash: 'chuan-lian-dong-hua'
-        }, {
-          name: '并联动画',
-          hash: 'bing-lian-dong-hua'
-        }]
-      }]
-    }
-  },
-
-  computed: {
-    sidebar: function () {
-      return this[`${this.type}Menu`]
+      openeds: [],
+      sidebar: []
     }
   },
 
   mounted () {
     this.scrollSpy()
+    this.getMenuList()
+  },
+
+  watch: {
+    type: function (val, oldVal) {
+      this.$nextTick(function () {
+        this.getMenuList()
+      })
+    }
   },
 
   methods: {
     getMenuList () {
-
+      this.sidebar = []
+      const anchors = document.querySelectorAll('h2, h3')
+      let item = {}
+      anchors.forEach(element => {
+        if (element.tagName.toUpperCase() === 'H2') {
+          if (item.name) {
+            this.sidebar.push(item)
+            item = {}
+          }
+          item.name = element.innerText
+        } else if (element.tagName.toUpperCase() === 'H3') {
+          if (!item.children) {
+            item.children = []
+          }
+          item.children.push({
+            name: element.innerText,
+            hash: element.id
+          })
+        }
+      })
+      this.sidebar.push(item)
+      item = {}
     },
     scrollSpy () {
       const handleScroll = () => {

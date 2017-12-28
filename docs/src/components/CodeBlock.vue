@@ -43,6 +43,7 @@
   border-radius: 3px;
   overflow: hidden;
   position: relative;
+  margin: 16px 0;
 }
 
 .code-block .el-button {

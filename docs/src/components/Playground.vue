@@ -15,7 +15,7 @@
 <style scoped>
 .playground {
   width: 1140px;
-  height: 100%;
+  height: calc(100% - 60px);
   margin: 0 auto;
 }
 

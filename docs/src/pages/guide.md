@@ -10,9 +10,36 @@
 
 普通文本元素
 
+### 文本
+
+关键词：content
+
+不可渐变
+
+:::demo
+```js
+def text c {
+    content = "bilibili"
+    fontSize = 10%
+    x = 50%
+    y = 50%
+    anchorX = 0.5
+    anchorY = 0.5
+}
+set c {} 2s
+then set c {
+    content = "干杯"
+} 3s
+```
+:::
+
 ### 定位
 
-关键词：x y anchorX anchorY
+关键词：x y
+
+以锚点（anchorX anchorY）为参考点进行定位
+
+可以为百分比值，大小为当前宽高 * 百分比值 px
 
 :::demo
 ```js
@@ -62,6 +89,135 @@ set c {
 ```
 :::
 
+### 旋转
+
+关键词：rotateX rotateY rotateZ
+
+以锚点为中心点进行旋转
+
+:::demo
+```js
+def text c {
+    content = "bilibili"
+    fontSize = 10%
+    x = 50%
+    y = 50%
+    anchorX = 0.5
+    anchorY = 0.5
+    rotateX = 0
+    rotateY = 0
+    rotateZ = 0
+}
+set c {
+    rotateX = 180
+    rotateY = 180
+    rotateZ = 180
+} 5s
+```
+:::
+
+### 缩放
+
+关键词：scale
+
+以锚点为中心点进行缩放
+
+:::demo
+```js
+def text c {
+    content = "bilibili"
+    fontSize = 5%
+    x = 50%
+    y = 50%
+    anchorX = 0.5
+    anchorY = 0.5
+    scale = 2
+}
+```
+:::
+
+### 锚点
+
+关键词：anchorX anchorY
+
+定位、缩放、旋转的参考点或中心点
+
+取值为元素长宽的百分比
+
+:::demo
+```js
+def text tl {
+    content = "左上"
+    fontSize = 2.5%
+    x = 0
+    y = 0
+    anchorX = 0
+    anchorY = 0
+    scale = 2
+}
+def text tr {
+    content = "右上"
+    fontSize = 2.5%
+    x = 100%
+    y = 0
+    anchorX = 1
+    anchorY = 0
+    scale = 2
+}
+def text bl {
+    content = "左下"
+    fontSize = 2.5%
+    x = 0
+    y = 100%
+    anchorX = 0
+    anchorY = 1
+    scale = 2
+}
+def text br {
+    content = "右下"
+    fontSize = 2.5%
+    x = 100%
+    y = 100%
+    anchorX = 1
+    anchorY = 1
+    scale = 2
+}
+def text c {
+    content = "BAS弹幕"
+    x = 50%
+    y = 50%
+    fontSize = 5%
+    anchorX = 0.5
+    anchorY = 0.5
+    scale = 2
+}
+set tl {
+    rotateX = -180
+    rotateY = 180
+    rotateZ = 180
+} 5s
+set tr {
+    rotateX = -180
+    rotateY = -180
+    rotateZ = -180
+} 5s
+set bl {
+    rotateX = 180
+    rotateY = 180
+    rotateZ = -180
+} 5s
+set br {
+    rotateX = -180
+    rotateY = -180
+    rotateZ = -180
+} 5s
+set c {
+    rotateX = 180
+    rotateY = 180
+    rotateZ = 180
+} 5s
+```
+
 ### 透明度
 
 关键词：alpha
@@ -88,6 +244,8 @@ set c {
 ### 颜色
 
 关键词：color
+
+取值为 0x十六进制颜色值
 
 :::demo
 ```js
@@ -141,38 +299,13 @@ set d {} 5s
 ```
 :::
 
-### 旋转
-
-关键词：rotateX rotateY rotateZ
-
-:::demo
-```js
-def text c {
-    content = "bilibili"
-    fontSize = 10%
-    x = 50%
-    y = 50%
-    anchorX = 0.5
-    anchorY = 0.5
-    rotateX = 0
-    rotateY = 0
-    rotateZ = 0
-}
-set c {
-    rotateX = 180
-    rotateY = 180
-    rotateZ = 180
-} 5s
-```
-:::
-
 ### 所属层
 
 关键词：parent
 
 不可变
 
-以父级对象作为舞台进行绘制
+以父级元素作为舞台进行绘制
 
 :::demo
 ```js
@@ -231,34 +364,13 @@ then set d {} 4s
 ```
 :::
 
-### 文本
-
-关键词：content
-
-不可渐变
-
-:::demo
-```js
-def text c {
-    content = "bilibili"
-    fontSize = 10%
-    x = 50%
-    y = 50%
-    anchorX = 0.5
-    anchorY = 0.5
-}
-set c {} 2s
-then set c {
-    content = "干杯"
-} 3s
-```
-:::
-
 ### 字号
 
 关键词：fontSize
 
 不可渐变
+
+可以为百分比值，百分比字体大小为 当前容器宽度 * 百分比 px
 
 :::demo
 ```js
@@ -377,6 +489,8 @@ def text c {
 
 ### seek 按钮
 
+seek 到视频某个时间点
+
 此交互依赖视频，无法演示，请到播放器测试效果
 
 :::demo
@@ -396,6 +510,8 @@ def button c {
 :::
 
 ### av 跳转按钮
+
+新窗口打开 bilibili 视频
 
 :::demo
 ```js
@@ -417,6 +533,8 @@ def button c {
 :::
 
 ### bangumi 跳转按钮
+
+新窗口打开 bilibili 番剧视频
 
 :::demo
 ```js
@@ -442,6 +560,8 @@ def button c {
 svg 图形元素
 
 ### path 对象
+
+d 取值为 svg 图形的路径
 
 :::demo
 ```js

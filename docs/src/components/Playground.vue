@@ -81,8 +81,10 @@
         if (code) {
           try {
             this.bas.add({
-              stime: -1,
-              text: code
+              dm: {
+                stime: -1,
+                text: code
+              }
             }, false, true)
             this.$message.success('运行成功')
           } catch (e) {
